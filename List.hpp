@@ -1,7 +1,9 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
-#include <iostream>
+#include "Node.hpp"
+#include "ListIterator.hpp"
+// #include <iostream>
 	
 namespace ft
 {	
@@ -9,14 +11,7 @@ namespace ft
 	class List
 	{
 	private:
-		struct Node
-		{
-			T value;
-			struct Node * next;
-			struct Node * prev;
-		};
-
-		Node * _new_node(T const & val)
+		Node<T> * _new_node(T const & val)
 		{
 			Node * n = new Node;
 			n->value = val;
@@ -25,7 +20,7 @@ namespace ft
 			return (n);
 		}
 
-		Node * _new_node()
+		Node<T> * _new_node()
 		{
 			Node * n = new Node;
 			n->value = T();
@@ -34,10 +29,15 @@ namespace ft
 			return (n);
 		}
 
-		Node * _start;
-		Node * _end;
+		Node<T> * _start;
+		Node<T> * _end;
 		
 	public:
+		typedef ListIterator<T> iterator;
+		typedef ConstListIterator<T> const_iterator;
+		typedef ReverseListIterator<T> reverse_iterator;
+		typedef ConstReverseListIterator<T> const_reverse_iterator;
+	/*
 		class iterator
 		{
 		private:
@@ -98,7 +98,7 @@ namespace ft
 			const_iterator(Node * ptr) : _ptr(ptr) {}
 			~const_iterator() {}
 		};
-		
+		*/
 		List() : _start(NULL)
 		{
 			_end = _new_node();
@@ -183,31 +183,6 @@ namespace ft
 	};
 
 
-} // namespace ft
-
-int main()
-{
-	ft::List<int> a;
-	std::cout << "SIZE = " << a.size() << std::endl;
-	a.push_front(1);
-	std::cout << "SIZE = " << a.size() << std::endl;
-	a.push_front(2);
-	a.push_front(3);
-	a.push_back(0);
-
-	std::cout << "SIZE = " << a.size() << std::endl;
-	ft::List<int>::iterator i = a.begin();
-	std::cout << "start: " << *i << std::endl;
-	ft::List<int>::iterator c = a.end();
-	std::cout <<  "end: " << *c << std::endl;
-
-	std::cout << std::endl;
-	while (i != a.end())
-	{
-		std::cout << *i++ << " ";
-	}
-	std::cout << std::endl;
-
-}	
+} // namespace ft		
 
 #endif
