@@ -6,14 +6,14 @@
 
 namespace ft
 {
-	template <class T>
+	template <typename T>
 	class ListIterator
 	{
 	protected:
 		Node<T> * _ptr;
 
 	public:
-		ListIterator(void)
+		ListIterator()
 		{};
 		ListIterator(ListIterator const & other)
 		{
@@ -22,9 +22,9 @@ namespace ft
 		ListIterator(Node<T> * ptr) 
 		: _ptr(ptr)
 		{};
-		~ListIterator(void)
+		~ListIterator()
 		{};
-		Node<T> * node(void) const
+		Node<T> * node()
 		{
 			return (_ptr);
 		};
@@ -33,12 +33,12 @@ namespace ft
 			_ptr = other._ptr;
 			return (*this);
 		};
-		ListIterator & operator++(void)
+		ListIterator & operator++()
 		{
 			_ptr = _ptr->next;
 			return (*this);
 		};
-		ListIterator & operator--(void)
+		ListIterator & operator--()
 		{
 			_ptr = _ptr->prev;
 			return (*this);
@@ -63,91 +63,95 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		bool operator>(ListIterator const & other) const
+		// bool operator>(ListIterator const & other) const
+		// {
+		// 	return (_ptr > other._ptr);
+		// };
+		// bool operator>=(ListIterator const & other) const
+		// {
+		// 	return (_ptr >= other._ptr);
+		// };
+		// bool operator<(ListIterator const & other) const
+		// {
+		// 	return (_ptr < other._ptr);
+		// };
+		// bool operator<=(ListIterator const & other) const
+		// {
+		// 	return (_ptr <= other._ptr);
+		// };
+		T & operator*()
 		{
-			return (_ptr > other._ptr);
+			return (_ptr->value);
 		};
-		bool operator>=(ListIterator const & other) const
+		T * operator->()
 		{
-			return (_ptr >= other._ptr);
+			return (_ptr->value);
 		};
-		bool operator<(ListIterator const & other) const
-		{
-			return (_ptr < other._ptr);
-		};
-		bool operator<=(ListIterator const & other) const
-		{
-			return (_ptr <= other._ptr);
-		};
-		T & operator*(void)
-		{
-			return (_ptr->data);
-		};
-		T *operator->(void)
-		{
-			return (_ptr->data);
-		};
-		ListIterator operator+(int n) const
-		{
-			ListIterator tmp(*this);
-			tmp += n;
-			return (tmp);
-		};
-		ListIterator operator-(int n) const
-		{
-			ListIterator tmp(*this);
-			tmp -= n;
-			return (tmp);
-		};
-		ListIterator & operator+=(int n)
-		{
-			while (n < 0)
-			{
-				(*this)--;
-				n++;
-			}
-			while (n > 0)
-			{
-				(*this)++;
-				n--;
-			}
-			return (*this);
-		};
-		ListIterator & operator-=(int n)
-		{
-			while (n > 0)
-			{
-				operator--();
-				n--;
-			}
-			while (n < 0)
-			{
-				operator++();
-				n++;
-			}
-			return (*this);
-		};
+	// 	ListIterator operator+(int n) const
+	// 	{
+	// 		ListIterator tmp(*this);
+	// 		tmp += n;
+	// 		return (tmp);
+	// 	};
+	// 	ListIterator operator-(int n) const
+	// 	{
+	// 		ListIterator tmp(*this);
+	// 		tmp -= n;
+	// 		return (tmp);
+	// 	};
+	// 	ListIterator & operator+=(int n)
+	// 	{
+	// 		while (n < 0)
+	// 		{
+	// 			(*this)--;
+	// 			n++;
+	// 		}
+	// 		while (n > 0)
+	// 		{
+	// 			(*this)++;
+	// 			n--;
+	// 		}
+	// 		return (*this);
+	// 	};
+	// 	ListIterator & operator-=(int n)
+	// 	{
+	// 		while (n > 0)
+	// 		{
+	// 			operator--();
+	// 			n--;
+	// 		}
+	// 		while (n < 0)
+	// 		{
+	// 			operator++();
+	// 			n++;
+	// 		}
+	// 		return (*this);
+	// 	};
 	};
 	
-	template <class T>
-	class ConstListIterator
+	template <typename T>
+	class ConstListIterator 
 	{
 	protected:
 		Node<T> * _ptr;
 
 	public:
-		ConstListIterator(void)
+		ConstListIterator()
 		{};
 		ConstListIterator(ConstListIterator const & other)
+		{
+			*this = other;
+		};
+		ConstListIterator(ListIterator<T> const & other)
 		{
 			*this = other;
 		};
 		ConstListIterator(Node<T> * ptr)
 		: _ptr(ptr)
 		{};
-		~ConstListIterator(void)
+		~ConstListIterator()
 		{};
-		Node<T> * node(void) const
+		Node<T> * node() const
 		{
 			return (_ptr);
 		};
@@ -156,12 +160,12 @@ namespace ft
 			_ptr = other._ptr;
 			return (*this);
 		};
-		ConstListIterator & operator++(void)
+		ConstListIterator & operator++()
 		{
 			_ptr = _ptr->next;
 			return (*this);
 		};
-		ConstListIterator & operator--(void)
+		ConstListIterator & operator--()
 		{
 			_ptr = _ptr->prev;
 			return (*this);
@@ -186,80 +190,80 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		bool operator>(ConstListIterator const & other) const
+		// bool operator>(ConstListIterator const & other) const
+		// {
+		// 	return (_ptr > other._ptr);
+		// };
+		// bool operator>=(ConstListIterator const & other) const
+		// {
+		// 	return (_ptr >= other._ptr);
+		// };
+		// bool operator<(ConstListIterator const & other) const
+		// {
+		// 	return (_ptr < other._ptr);
+		// };
+		// bool operator<=(ConstListIterator const & other) const
+		// {
+		// 	return (_ptr <= other._ptr);
+		// };
+		const T & operator*() const
 		{
-			return (_ptr > other._ptr);
+			return (_ptr->value);
 		};
-		bool operator>=(ConstListIterator const & other) const
+		const T * operator->() const
 		{
-			return (_ptr >= other._ptr);
+			return (_ptr->value);
 		};
-		bool operator<(ConstListIterator const & other) const
-		{
-			return (_ptr < other._ptr);
-		};
-		bool operator<=(ConstListIterator const & other) const
-		{
-			return (_ptr <= other._ptr);
-		};
-		const T & operator*(void)
-		{
-			return (_ptr->data);
-		};
-		const T *operator->(void)
-		{
-			return (_ptr->data);
-		};
-		ConstListIterator operator+(int n) const
-		{
-			ConstListIterator tmp(*this);
-			tmp += n;
-			return (tmp);
-		};
-		ConstListIterator operator-(int n) const
-		{
-			ConstListIterator tmp(*this);
-			tmp -= n;
-			return (tmp);
-		};
-		ConstListIterator & operator+=(int n)
-		{
-			while (n < 0)
-			{
-				(*this)--;
-				n++;
-			}
-			while (n > 0)
-			{
-				(*this)++;
-				n--;
-			}
-			return (*this);
-		};
-		ConstListIterator & operator-=(int n)
-		{
-			while (n > 0)
-			{
-				operator--();
-				n--;
-			}
-			while (n < 0)
-			{
-				operator++();
-				n++;
-			}
-			return (*this);
-		};
+	// 	ConstListIterator operator+(int n) const
+	// 	{
+	// 		ConstListIterator tmp(*this);
+	// 		tmp += n;
+	// 		return (tmp);
+	// 	};
+	// 	ConstListIterator operator-(int n) const
+	// 	{
+	// 		ConstListIterator tmp(*this);
+	// 		tmp -= n;
+	// 		return (tmp);
+	// 	};
+	// 	ConstListIterator & operator+=(int n)
+	// 	{
+	// 		while (n < 0)
+	// 		{
+	// 			(*this)--;
+	// 			n++;
+	// 		}
+	// 		while (n > 0)
+	// 		{
+	// 			(*this)++;
+	// 			n--;
+	// 		}
+	// 		return (*this);
+	// 	};
+	// 	ConstListIterator & operator-=(int n)
+	// 	{
+	// 		while (n > 0)
+	// 		{
+	// 			operator--();
+	// 			n--;
+	// 		}
+	// 		while (n < 0)
+	// 		{
+	// 			operator++();
+	// 			n++;
+	// 		}
+	// 		return (*this);
+	// 	};
 	};
 
-	template <class T>
+	template <typename T>
 	class ReverseListIterator
 	{
 	protected:
 		Node<T> * _ptr;
 		
 	public:
-		ReverseListIterator(void)
+		ReverseListIterator()
 		{};
 		ReverseListIterator(const ReverseListIterator & other)
 		{
@@ -269,14 +273,14 @@ namespace ft
 		{
 			this->_ptr = ptr;
 		};
-		~ReverseListIterator(void)
+		~ReverseListIterator()
 		{};
-		ReverseListIterator & operator++(void)
+		ReverseListIterator & operator++()
 		{
 			this->_ptr = this->_ptr->prev;
 			return (*this);
 		};
-		ReverseListIterator & operator--(void)
+		ReverseListIterator & operator--()
 		{
 			this->_ptr = this->_ptr->next;
 			return (*this);
@@ -301,29 +305,29 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		bool operator>(const ReverseListIterator & other) const
+		// bool operator>(const ReverseListIterator & other) const
+		// {
+		// 	return (_ptr > other._ptr);
+		// };
+		// bool operator>=(const ReverseListIterator & other) const
+		// {
+		// 	return (_ptr >= other._ptr);
+		// };
+		// bool operator<(const ReverseListIterator & other) const
+		// {
+		// 	return (_ptr < other._ptr);
+		// };
+		// bool operator<=(const ReverseListIterator & other) const
+		// {
+		// 	return (_ptr <= other._ptr);
+		// };
+		T & operator*()
 		{
-			return (_ptr > other._ptr);
+			return (_ptr->value);
 		};
-		bool operator>=(const ReverseListIterator & other) const
+		T *operator->()
 		{
-			return (_ptr >= other._ptr);
-		};
-		bool operator<(const ReverseListIterator & other) const
-		{
-			return (_ptr < other._ptr);
-		};
-		bool operator<=(const ReverseListIterator & other) const
-		{
-			return (_ptr <= other._ptr);
-		};
-		T & operator*(void)
-		{
-			return (_ptr->data);
-		};
-		T *operator->(void)
-		{
-			return (_ptr->data);
+			return (_ptr->value);
 		};
 		ReverseListIterator operator+(int n) const
 		{
@@ -367,14 +371,14 @@ namespace ft
 		};
 	};
 
-	template <class T>
+	template <typename T>
 	class ConstReverseListIterator
 	{
 	protected:
 		Node<T> * _ptr;
 		
 	public:
-		ConstReverseListIterator(void)
+		ConstReverseListIterator()
 		{};
 		ConstReverseListIterator(const ConstReverseListIterator & other)
 		{
@@ -384,14 +388,14 @@ namespace ft
 		{
 			this->_ptr = ptr;
 		};
-		~ConstReverseListIterator(void)
+		~ConstReverseListIterator()
 		{};
-		ConstReverseListIterator & operator++(void)
+		ConstReverseListIterator & operator++()
 		{
 			this->_ptr = this->_ptr->prev;
 			return (*this);
 		};
-		ConstReverseListIterator & operator--(void)
+		ConstReverseListIterator & operator--()
 		{
 			this->_ptr = this->_ptr->next;
 			return (*this);
@@ -416,70 +420,70 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		bool operator>(const ConstReverseListIterator & other) const
+		// bool operator>(const ConstReverseListIterator & other) const
+		// {
+		// 	return (_ptr > other._ptr);
+		// };
+		// bool operator>=(const ConstReverseListIterator & other) const
+		// {
+		// 	return (_ptr >= other._ptr);
+		// };
+		// bool operator<(const ConstReverseListIterator & other) const
+		// {
+		// 	return (_ptr < other._ptr);
+		// };
+		// bool operator<=(const ConstReverseListIterator & other) const
+		// {
+		// 	return (_ptr <= other._ptr);
+		// };
+		T & operator*()
 		{
-			return (_ptr > other._ptr);
+			return (_ptr->value);
 		};
-		bool operator>=(const ConstReverseListIterator & other) const
+		T *operator->()
 		{
-			return (_ptr >= other._ptr);
+			return (_ptr->value);
 		};
-		bool operator<(const ConstReverseListIterator & other) const
-		{
-			return (_ptr < other._ptr);
-		};
-		bool operator<=(const ConstReverseListIterator & other) const
-		{
-			return (_ptr <= other._ptr);
-		};
-		T & operator*(void)
-		{
-			return (_ptr->data);
-		};
-		T *operator->(void)
-		{
-			return (_ptr->data);
-		};
-		ConstReverseListIterator operator+(int n) const
-		{
-			ConstReverseListIterator tmp(*this);
-			tmp += n;
-			return (tmp);
-		};
-		ConstReverseListIterator operator-(int n) const
-		{
-			ConstReverseListIterator tmp(*this);
-			tmp -= n;
-			return (tmp);
-		};
-		ConstReverseListIterator & operator+=(int n)
-		{
-			while (n < 0)
-			{
-				(*this)--;
-				n++;
-			}
-			while (n > 0)
-			{
-				(*this)++;
-				n--;
-			}
-			return (*this);
-		};
-		ConstReverseListIterator & operator-=(int n)
-		{
-			while (n > 0)
-			{
-				operator--();
-				n--;
-			}
-			while (n < 0)
-			{
-				operator++();
-				n++;
-			}
-			return (*this);
-		};
+		// ConstReverseListIterator operator+(int n) const
+		// {
+		// 	ConstReverseListIterator tmp(*this);
+		// 	tmp += n;
+		// 	return (tmp);
+		// };
+		// ConstReverseListIterator operator-(int n) const
+		// {
+		// 	ConstReverseListIterator tmp(*this);
+		// 	tmp -= n;
+		// 	return (tmp);
+		// };
+		// ConstReverseListIterator & operator+=(int n)
+		// {
+		// 	while (n < 0)
+		// 	{
+		// 		(*this)--;
+		// 		n++;
+		// 	}
+		// 	while (n > 0)
+		// 	{
+		// 		(*this)++;
+		// 		n--;
+		// 	}
+		// 	return (*this);
+		// };
+		// ConstReverseListIterator & operator-=(int n)
+		// {
+		// 	while (n > 0)
+		// 	{
+		// 		operator--();
+		// 		n--;
+		// 	}
+		// 	while (n < 0)
+		// 	{
+		// 		operator++();
+		// 		n++;
+		// 	}
+		// 	return (*this);
+		// };
 	};
 };
 

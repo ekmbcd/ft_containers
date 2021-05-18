@@ -11,27 +11,36 @@ namespace ft
 	class List
 	{
 	private:
+		Node<T> * _start;
+		Node<T> * _end;
+
 		Node<T> * _new_node(T const & val)
 		{
-			Node * n = new Node;
+			Node<T> * n = new Node<T>;
 			n->value = val;
 			n->next = NULL;
 			n->prev = NULL;
 			return (n);
 		}
-
 		Node<T> * _new_node()
 		{
-			Node * n = new Node;
+			Node<T> * n = new Node<T>;
 			n->value = T();
 			n->next = NULL;
 			n->prev = NULL;
 			return (n);
 		}
-
-		Node<T> * _start;
-		Node<T> * _end;
-		
+		void free_list()
+		{
+			Node<T> * tmp = _start;
+			while (tmp != _end)
+			{
+				delete tmp;
+				tmp = tmp->next;
+			}
+			delete tmp;
+		}
+	
 	public:
 		typedef ListIterator<T> iterator;
 		typedef ConstListIterator<T> const_iterator;
@@ -99,14 +108,50 @@ namespace ft
 			~const_iterator() {}
 		};
 		*/
-		List() : _start(NULL)
+		List() 
+		: _start(NULL)
 		{
 			_end = _new_node();
 		}
-		// List(List const & src);
-		// ~List();
-
-		// List & operator = (List const & src);
+		explicit List(unsigned int n, T const & val=T())
+		: _start(NULL)
+		{
+			_end = _new_node();
+			while (n--)
+			{
+				push_front(val);
+			}
+		}
+		explicit List(iterator first, iterator last)
+		: _start(NULL)
+		{
+			_end = _new_node();
+			while (first != last)
+			{
+				push_back(*first);
+				++first;
+			}
+		}
+		List(List const & src)
+		: _start(NULL) 
+		{
+			_end = _new_node();
+			*this = src;
+		}
+		~List()
+		{
+			free_list();
+		}
+		List & operator=(List const & src)
+		{
+			free_list();
+			iterator it(src.begin());
+			while (it != src.end())
+			{
+				push_back(*it);
+				++it;
+			}
+		}
 		unsigned int size() const
 		{
 			iterator i(_start);
@@ -117,31 +162,25 @@ namespace ft
 				n++;
 			return (n);
 		}
-
 		iterator begin()
 		{
-			return(iterator(_start));
+			return(_start);
 		}
-
 		const_iterator begin() const
 		{
-			return(const_iterator(_start));
+			return(_start);
 		}
-
 		iterator end()
 		{	
 			return(iterator(_end));
 		}
-
 		const_iterator end() const
 		{
 			return(const_iterator(_end));
 		}
-
 		void push_front(T const & val)
 		{
-			Node * tmp;
-			tmp = _new_node(val);
+			Node<T> * tmp = _new_node(val);
 			if (!_start)
 			{
 				_start = tmp;
@@ -159,11 +198,9 @@ namespace ft
 				_start = tmp;
 			}
 		}
-
 		void push_back(T const & val)
 		{
-			Node * tmp;
-			tmp = _new_node(val);
+			Node<T> * tmp = _new_node(val);
 			if (!_start)
 			{
 				_start = tmp;
@@ -180,6 +217,7 @@ namespace ft
 				_end->prev = tmp;
 			}
 		}
+
 	};
 
 

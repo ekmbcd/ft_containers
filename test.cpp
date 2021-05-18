@@ -18,7 +18,26 @@ int main()
 	//std::list<int>::iterator c = ;
 	std::cout <<  "end: " << *(a.end()) << std::endl;
 
-	std::cout << std::endl;
-	std::cout << std::endl;
+	std::list<int>::iterator st = a.begin();
+	std::list<int>::iterator en = a.end();
+
+	
+	std::list<int> d(10, 10);
+	std::list<int> e(3, 3);
+
+	e = d;
+	std::list<int>::iterator i = e.begin();
+	while (i != e.end())
+	{
+		std::cout << *i << " ";
+		++i;
+	}
+	std::list<int>::const_iterator z = a.begin();
+
+
+
+	std::cout << *z << std::endl;	
+	++z;
+	std::cout << *z << std::endl;
 
 }
