@@ -5,6 +5,7 @@ int main()
 {
 	std::list<int> a;
 	std::cout << "SIZE = " << a.size() << std::endl;
+
 	a.push_front(1);
 	std::cout << "SIZE = " << a.size() << std::endl;
 	a.push_front(2);
@@ -12,8 +13,7 @@ int main()
 	a.push_front(4);
 
 
-	std::cout << "SIZE = " << a.size() << std::endl;
-	//std::list<int>::iterator i = ;
+	std::cout << "MAXSIZE = " << a.max_size() << std::endl;
 	std::cout << "start: " << *(a.begin()) << std::endl;
 	//std::list<int>::iterator c = ;
 	std::cout <<  "end: " << *(a.end()) << std::endl;
@@ -26,12 +26,12 @@ int main()
 	std::list<int> e(3, 3);
 
 	e = d;
-	std::list<int>::iterator i = e.begin();
-	while (i != e.end())
-	{
-		std::cout << *i << " ";
-		++i;
-	}
+	std::list<int>::reverse_iterator i = a.rbegin();
+	// while (i != e.end())
+	// {
+		std::cout <<"REV: "<< *i << std::endl;
+		// ++i;
+	// }
 	std::list<int>::const_iterator z = a.begin();
 
 

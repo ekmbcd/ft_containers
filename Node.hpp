@@ -12,6 +12,13 @@ namespace ft
 		struct Node * next;
 		struct Node * prev;
 	};
+	template <typename T>
+	void	swap(T & a, T & b)
+	{
+		T tmp = a;
+		a = b;
+		b = tmp;
+	};
 } // namespace ft
 
 #endif

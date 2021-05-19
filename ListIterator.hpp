@@ -6,6 +6,12 @@
 
 namespace ft
 {
+	
+	template <typename T>
+	class ConstListIterator;
+	template <typename T>
+	class ConstReverseListIterator;
+
 	template <typename T>
 	class ListIterator
 	{
@@ -22,6 +28,10 @@ namespace ft
 		ListIterator(Node<T> * ptr) 
 		: _ptr(ptr)
 		{};
+		ListIterator(ConstListIterator<T> other)
+		{
+			_ptr = other.node();
+		};
 		~ListIterator()
 		{};
 		Node<T> * node()
@@ -130,7 +140,7 @@ namespace ft
 	};
 	
 	template <typename T>
-	class ConstListIterator 
+	class ConstListIterator
 	{
 	protected:
 		Node<T> * _ptr;
@@ -142,10 +152,10 @@ namespace ft
 		{
 			*this = other;
 		};
-		ConstListIterator(ListIterator<T> const & other)
-		{
-			*this = other;
-		};
+		// ConstListIterator(ListIterator<T> other)
+		// {
+		// 	_ptr = other.node();
+		// };
 		ConstListIterator(Node<T> * ptr)
 		: _ptr(ptr)
 		{};
@@ -273,6 +283,10 @@ namespace ft
 		{
 			this->_ptr = ptr;
 		};
+		ReverseListIterator(ConstReverseListIterator<T> other)
+		{
+			_ptr = other.node();
+		};
 		~ReverseListIterator()
 		{};
 		ReverseListIterator & operator++()
@@ -387,6 +401,10 @@ namespace ft
 		ConstReverseListIterator(Node<T> * ptr)
 		{
 			this->_ptr = ptr;
+		};
+		ConstReverseListIterator(ReverseListIterator<T> other)
+		{
+			_ptr = other.node();
 		};
 		~ConstReverseListIterator()
 		{};
