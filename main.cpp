@@ -2,6 +2,11 @@
 #include "ListIterator.hpp"
 #include <iostream>
 
+bool foo(int a, int b)
+{
+	return(a==b);
+}
+
 int main()
 {
 	/*
@@ -101,10 +106,18 @@ int main()
 		std::cout << *i++ << " ";
 	}
 	std::cout << std::endl;
-	b.resize(15);
+	b.splice(b.end(), a);
+	b.unique(foo);
 	std::cout << "B" << std::endl;
 	i = b.begin();
 	while (i != b.end())
+	{
+		std::cout << *i++ << " ";
+	}
+	std::cout << std::endl;
+	std::cout << "A" << std::endl;
+	i = a.begin();
+	while (i != a.end())
 	{
 		std::cout << *i++ << " ";
 	}

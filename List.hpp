@@ -357,6 +357,80 @@ namespace ft
 			while (n > size())
 				push_back(val);
 		}
+		void splice(iterator position, List & x)
+		{
+			splice(position, x, x.begin(), x.end());
+		}
+		void splice(iterator position, List & x, iterator i)
+		{
+			insert(position, *i);
+			x.erase(i);
+		}
+		void splice(iterator position, List & x, iterator first, iterator last)
+		{
+			insert(position, first, last);
+			x.erase(first, last);
+		}
+		void remove(const T & value)
+		{
+			iterator c = begin();
+			while (c != end())
+			{
+				if (*c == value)
+					c = erase(c);
+				else
+					c++;
+			}
+		}
+		template <class Predicate>
+  		void remove_if (Predicate pred)
+		{
+			iterator c = begin();
+			while (c != end())
+			{
+				if (pred(*c))
+					c = erase(c);
+				else
+					c++;
+			}
+		}
+		void unique()
+		{
+			iterator c = begin();
+			T tmp;
+			while (c != end())
+			{
+				tmp = *c;
+				++c;
+				while (c != end() && *c == tmp )
+				{
+					c = erase(c);
+				}
+			}
+		}
+		template <class BinaryPredicate>
+		void unique(BinaryPredicate binary_pred)
+		{
+			iterator prev = begin();
+			iterator next = ++begin();
+			while (next != end())
+			{
+				if (binary_pred(*prev, *next))
+					erase(next);
+				else
+					prev = next;
+				++next;
+			}
+		}
+		void merge (List & x)
+		{
+
+		}
+		template <class Compare>
+  		void merge (List & x, Compare comp)
+		{
+			
+		}
 	};
 
 } // namespace ft		
