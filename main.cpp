@@ -72,26 +72,61 @@ int main()
 	std::cout << std::endl;
 	*/
 
-	ft::List<int> a(10, 5);
-	ft::List<int> b(15, 10);
-	ft::ListIterator<int> i = a.begin();
-	std::cout << "A" << std::endl;
-	while (i != a.end())
-	{
-		std::cout << *i++ << " ";
-	}
-	std::cout << std::endl;
-	std::cout << "B" << std::endl;
-	i = b.begin();
-	while (i != b.end())
-	{
-		std::cout << *i++ << " ";
-	}
-	std::cout << std::endl;
-	std::cout << std::endl;
+	// ft::List<int> a(10, 5);
+	// ft::List<int> b(15, 10);
+	// ft::ListIterator<int> i = a.begin();
+	// std::cout << "A" << std::endl;
+	// while (i != a.end())
+	// {
+	// 	std::cout << *i++ << " ";
+	// }
+	// std::cout << std::endl;
+	// std::cout << "B" << std::endl;
+	// i = b.begin();
+	// while (i != b.end())
+	// {
+	// 	std::cout << *i++ << " ";
+	// }
+	// std::cout << std::endl;
+	// std::cout << std::endl;
 
 
-	a.swap(b);	
+	// a.swap(b);	
+	// std::cout << "A" << std::endl;
+	// i = a.begin();
+	// while (i != a.end())
+	// {
+	// 	std::cout << *i++ << " ";
+	// }
+	// std::cout << std::endl;
+	// std::cout << "B" << std::endl;
+	// i = b.begin();
+	// while (i != b.end())
+	// {
+	// 	std::cout << *i++ << " ";
+	// }
+	// std::cout << std::endl;
+	// b.splice(b.end(), a);
+	// b.unique(foo);
+	// std::cout << "B" << std::endl;
+	// i = b.begin();
+	// while (i != b.end())
+	// {
+	// 	std::cout << *i++ << " ";
+	// }
+	// std::cout << std::endl;
+	// std::cout << "A" << std::endl;
+	// i = a.begin();
+	// while (i != a.end())
+	// {
+	// 	std::cout << *i++ << " ";
+	// }
+	// std::cout << std::endl;
+
+	ft::List<int> a;
+	ft::ListIterator<int> i;
+	for (int i = 10; i > 0; i--)
+		a.push_back(i);
 	std::cout << "A" << std::endl;
 	i = a.begin();
 	while (i != a.end())
@@ -99,22 +134,7 @@ int main()
 		std::cout << *i++ << " ";
 	}
 	std::cout << std::endl;
-	std::cout << "B" << std::endl;
-	i = b.begin();
-	while (i != b.end())
-	{
-		std::cout << *i++ << " ";
-	}
-	std::cout << std::endl;
-	b.splice(b.end(), a);
-	b.unique(foo);
-	std::cout << "B" << std::endl;
-	i = b.begin();
-	while (i != b.end())
-	{
-		std::cout << *i++ << " ";
-	}
-	std::cout << std::endl;
+	a.sort();
 	std::cout << "A" << std::endl;
 	i = a.begin();
 	while (i != a.end())

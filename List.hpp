@@ -1,9 +1,11 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
+#include <limits>
 #include <memory>
 #include "Node.hpp"
 #include "ListIterator.hpp"
+
 // #include <iostream>
 	
 namespace ft
@@ -279,11 +281,14 @@ namespace ft
 		void clear()
 		{
 			Node<T> * tmp = _start;
+			Node<T> * next = _start->next;
+
 			
 			while (tmp && tmp != _end)
 			{
 				delete tmp;
-				tmp = tmp->next;
+				tmp = next;
+				next = next->next;
 			}
 			delete tmp;
 		}
@@ -424,12 +429,49 @@ namespace ft
 		}
 		void merge (List & x)
 		{
-
+			splice(begin(), x);
+			sort();
 		}
 		template <class Compare>
   		void merge (List & x, Compare comp)
 		{
+			splice(begin(), x);
+			sort(comp);
+		}
+		void sort()
+		{
+			iterator prev = begin();
+			iterator next;
+
+			while (prev.node()->next != end().node())
+			{
+				next = prev.node()->next;
+				while (next != end())
+				{
+					if (*next < *prev)
+						ft::swap(*prev, *next);
+					++next;
+				}
+				++prev;
+			}
+		}
+		template <class Compare>
+		void sort(Compare comp)
+		{
+			iterator prev = begin();
+			iterator next;
 			
+			while (prev.node()->next != end().node())
+			{
+				next = prev.node()->next;
+				while (next != end())
+				{
+					if (comp(*prev, *next))
+						ft::swap(*prev, *next);
+					++next;
+				}
+				++prev;
+			}
 		}
 	};
 

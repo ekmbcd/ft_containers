@@ -17,7 +17,7 @@ namespace ft
 	{
 		T tmp = a;
 		a = b;
-		b = tmp;
+		b = tmp;			
 	};
 } // namespace ft
 
