@@ -281,7 +281,7 @@ namespace ft
 		};
 		ReverseListIterator(Node<T> * ptr)
 		{
-			this->_ptr = ptr;
+			_ptr = ptr;
 		};
 		ReverseListIterator(ConstReverseListIterator<T> other)
 		{
@@ -289,14 +289,19 @@ namespace ft
 		};
 		~ReverseListIterator()
 		{};
+		ReverseListIterator & operator=(ReverseListIterator const & other)
+		{
+			_ptr = other._ptr;
+			return (*this);
+		};
 		ReverseListIterator & operator++()
 		{
-			this->_ptr = this->_ptr->prev;
+			_ptr = _ptr->prev;
 			return (*this);
 		};
 		ReverseListIterator & operator--()
 		{
-			this->_ptr = this->_ptr->next;
+			_ptr = _ptr->next;
 			return (*this);
 		};
 		ReverseListIterator operator++(int)
@@ -400,7 +405,7 @@ namespace ft
 		};
 		ConstReverseListIterator(Node<T> * ptr)
 		{
-			this->_ptr = ptr;
+			_ptr = ptr;
 		};
 		ConstReverseListIterator(ReverseListIterator<T> other)
 		{
@@ -408,14 +413,19 @@ namespace ft
 		};
 		~ConstReverseListIterator()
 		{};
+		ConstReverseListIterator & operator=(ConstReverseListIterator const & other)
+		{
+			_ptr = other._ptr;
+			return (*this);
+		};
 		ConstReverseListIterator & operator++()
 		{
-			this->_ptr = this->_ptr->prev;
+			_ptr = _ptr->prev;
 			return (*this);
 		};
 		ConstReverseListIterator & operator--()
 		{
-			this->_ptr = this->_ptr->next;
+			_ptr = _ptr->next;
 			return (*this);
 		};
 		ConstReverseListIterator operator++(int)
