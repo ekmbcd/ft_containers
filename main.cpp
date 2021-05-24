@@ -1,5 +1,7 @@
 #include "List.hpp"
 #include "ListIterator.hpp"
+#include "Vector.hpp"
+#include <vector>
 #include <iostream>
 
 bool foo(int a, int b)
@@ -122,7 +124,7 @@ int main()
 	// 	std::cout << *i++ << " ";
 	// }
 	// std::cout << std::endl;
-
+/*
 	ft::List<int> a;
 	ft::ListIterator<int> i;
 	for (int i = 10; i > 0; i--)
@@ -142,4 +144,12 @@ int main()
 		std::cout << *i++ << " ";
 	}
 	std::cout << std::endl;
+	*/
+
+	ft::Vector<int> z;
+	std::vector<int> zu;
+
+	zu.push_back(1);
+	std::cout << z.max_size() << std::endl;
+
 }

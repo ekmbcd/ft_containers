@@ -10,7 +10,7 @@
 	
 namespace ft
 {	
-	template <typename T, class Alloc=std::allocator<T> >
+	template <typename T, class Alloc = std::allocator<T> >
 	class List
 	{
 	private:
@@ -473,6 +473,60 @@ namespace ft
 				++prev;
 			}
 		}
+	};
+	template <typename T>
+	void swap(List<T> & x, List<T> & y)
+	{
+		x.swap(y);
+	};
+	template<typename T>
+	bool operator==(List<T> const & lhs, List<T> const & rhs) 
+	{
+		if (lhs.size() != rhs.size())
+			return (false);
+		typename List<T>::const_iterator tmp1 = lhs.begin();
+		typename List<T>::const_iterator tmp2 = rhs.begin();
+		while (tmp1 != lhs.end())
+		{
+			if (*(tmp1++) != *(tmp2++))
+				return (false);
+		}
+		return (true);
+	};
+	template<typename T>
+	bool operator!=(List<T> const & lhs, List<T> const & rhs) 
+	{
+		return (!(lhs == rhs));
+	};
+	template<typename T>
+	bool operator<(List<T> const & lhs, List<T> const & rhs) 
+	{
+		if (lhs.size() < rhs.size())
+			return (true);
+		if (lhs.size() > rhs.size())
+			return (false);
+		typename List<T>::const_iterator tmp1 = lhs.begin();
+		typename List<T>::const_iterator tmp2 = rhs.begin();
+		while (tmp1 != lhs.end())
+		{
+			if (*tmp1 != *tmp2)
+				return (*tmp1 < *tmp2);
+			++tmp1;
+			++tmp2;
+		}	
+		return (false);
+	};
+	template<typename T>
+	bool operator<=(List<T> const & lhs, List<T> const & rhs) {
+		return (!(rhs < lhs));
+	};
+	template<typename T>
+	bool operator>(List<T> const & lhs, List<T> const & rhs) {
+		return (rhs < lhs);
+	};
+	template<typename T>
+	bool operator>=(List<T> const & lhs, List<T> const & rhs) {
+		return (!(lhs < rhs));
 	};
 
 } // namespace ft		
