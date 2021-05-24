@@ -70,6 +70,10 @@
 		"deque": "cpp",
 		"numeric": "cpp",
 		"random": "cpp",
-		"numbers": "cpp"
+		"numbers": "cpp",
+		"__tree": "cpp",
+		"map": "cpp",
+		"queue": "cpp",
+		"stack": "cpp"
 	}
 }

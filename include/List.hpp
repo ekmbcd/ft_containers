@@ -3,7 +3,7 @@
 
 #include <limits>
 #include <memory>
-#include "Node.hpp"
+#include "utils.hpp"
 #include "ListIterator.hpp"
 
 // #include <iostream>
@@ -48,68 +48,7 @@ namespace ft
 		typedef ConstListIterator<T> const_iterator;
 		typedef ReverseListIterator<T> reverse_iterator;
 		typedef ConstReverseListIterator<T> const_reverse_iterator;
-	/*
-		class iterator
-		{
-		private:
-			Node * _ptr;
-		public:
-			iterator() : _ptr(NULL) {}
-			iterator(Node * ptr) : _ptr(ptr) {}
-			iterator(iterator const & src): _ptr(src._ptr) {}
-
-			virtual ~iterator() {}
-
-			T & operator * () { return (_ptr->value); }
-			T * operator & () { return (_ptr); }
-			T * operator ->() { return (_ptr->value); }
-			iterator & operator = (iterator & src)
-			{
-				_ptr = src._ptr;
-				return (*this); 
-			}
-			iterator & operator ++()
-			{
-				_ptr = _ptr->next;
-				return (*this);
-			}
-			iterator operator ++(int)
-			{
-				iterator tmp(*this);
-				_ptr = _ptr->next;
-				return (tmp);
-			}
-			iterator & operator --() 
-			{
-				_ptr = _ptr->prev;
-				return (*this);
-			}
-			iterator operator --(int) 
-			{
-				iterator tmp(*this);
-				_ptr = _ptr->prev;
-				return (tmp);
-			}
-			bool operator ==(iterator const & rhs) const 
-			{
-				return (_ptr == rhs._ptr);
-			}
-			bool operator !=(iterator const & rhs) const 
-			{
-				return (_ptr != rhs._ptr);
-			}
-		};
-
-		class const_iterator : public iterator
-		{
-		private:
-			Node const * _ptr;
-			const_iterator() {}
-		public:
-			const_iterator(Node * ptr) : _ptr(ptr) {}
-			~const_iterator() {}
-		};
-		*/
+	
 		explicit List(const allocator_type &alloc=allocator_type()) 
 		: _alloc(alloc)
 		{
@@ -121,7 +60,8 @@ namespace ft
 			_init();
 			assign(n, val);
 		}
-		List(iterator first, iterator last, const allocator_type &alloc=allocator_type())
+		template <class InputIterator>
+		List(InputIterator first, InputIterator last, const allocator_type &alloc=allocator_type())
 		: _alloc(alloc)
 		{
 			_init();
@@ -135,11 +75,11 @@ namespace ft
 		~List()
 		{
 			clear();
+			delete _end;
 		}
 		List & operator=(List const & src)
 		{
 			clear();
-			_init();
 			iterator it(src.begin());
 			while (it != src.end())
 			{
@@ -184,27 +124,27 @@ namespace ft
 		}
 		bool empty() const
 		{
-			return(!(_start));
+			return(!(size()));
 		}
 		unsigned long max_size() const
 		{
 			return (std::numeric_limits<unsigned long>::max() / (sizeof(Node<T>)));
 		};
-		Node<T> & front()
+		T & front()
 		{
-			return(*_start);
+			return(_start->value);
 		}
-		Node<T> const & front() const
+		T const & front() const
 		{
-			return(*_start);
+			return(_start->value);
 		}
-		Node<T> & back()
+		T & back()
 		{
-			return(*(_end->prev));
+			return(_end->prev->value);
 		}
-		Node<T> const & back() const
+		T const & back() const
 		{
-			return(*(_end->prev));
+			return(_end->prev->value);
 		}
 		void push_front(T const & val)
 		{
@@ -260,30 +200,28 @@ namespace ft
 			Node<T> * tmp = _end->prev;
 			tmp->prev->next = _end;
 			_end->prev = tmp->prev;
+			if (tmp == _start)
+				_start = _end;
 			delete tmp;
 		}
-		void assign(iterator first, iterator last)
+		template <class InputIterator>
+		void assign(InputIterator first, InputIterator last)
 		{
 			clear();
-			_init();
 			while (first != last)
 				push_back(*(first++));
 		};
 		void assign(unsigned int n, const T & val)
 		{
 			clear();
-			_init();
 			while (n--)
-			{
 				push_front(val);
-			}
 		}
 		void clear()
 		{
 			Node<T> * tmp = _start;
 			Node<T> * next = _start->next;
 
-			
 			while (tmp && tmp != _end)
 			{
 				delete tmp;
@@ -291,6 +229,7 @@ namespace ft
 				next = next->next;
 			}
 			delete tmp;
+			_init();
 		}
 		iterator insert(iterator position, const T & val)
 		{
@@ -358,7 +297,7 @@ namespace ft
 		void resize (unsigned int n, T const & val = T())
 		{
 			while (n < size())
-				pop_back();
+				pop_back();	
 			while (n > size())
 				push_back(val);
 		}
@@ -471,6 +410,21 @@ namespace ft
 					++next;
 				}
 				++prev;
+			}
+		}
+		void reverse()
+		{
+			iterator head = begin();
+			iterator tail = end();
+			T tmp;
+
+			while (head != tail)
+			{
+				tmp = *head;
+				*head = *tail;
+				*tail = tmp;
+				++head;
+				--tmp;
 			}
 		}
 	};

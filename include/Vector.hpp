@@ -5,6 +5,7 @@
 # include <memory>
 # include <limits>
 # include "VectorIterator.hpp"
+# include "utils.hpp"
 
 namespace ft
 {
@@ -20,7 +21,8 @@ namespace ft
 		void _free()
 		{
 			if(_array)
-				delete [] _array; 
+				delete [] _array;
+			_array = 0;
 		}
 
 	public:		
@@ -138,9 +140,9 @@ namespace ft
 		iterator insert(iterator position, const T & value)
 		{
 			unsigned int i = 0;
-			unsigned int j = _capacity - 1;
+			unsigned int j = _size;
 			iterator it = begin();
-			
+
 			while (it + i != position && i < _size)
 				i++;
 			if (_capacity < _size + 1)
@@ -149,18 +151,19 @@ namespace ft
 			{
 				_array[j] = _array[j - 1];
 				j--;
-			}
+			}	
 			_array[i] = value;
 			_size++;
+			
 			return (iterator(&_array[i]));
 		};
 		void insert(iterator position, unsigned int n, const T & value)
-		{
+		{			
 			while (n--)
 				position = insert(position, value);
 		};
-		template <class InputIterator>
-		void insert(iterator position, InputIterator begin, InputIterator end)
+		// template <class InputIterator>
+		void insert(iterator position, iterator begin, iterator end)
 		{
 			while (begin != end)
 			{
@@ -170,7 +173,7 @@ namespace ft
 		};
 		unsigned long max_size(void) const
 		{
-			return (std::numeric_limits<unsigned long>::max() / sizeof(T) / 2);
+			return (std::numeric_limits<unsigned long>::max() / sizeof(T));
 		};
 		T & at(unsigned int n)
 		{
@@ -210,8 +213,8 @@ namespace ft
 			_size = 0;
 			_capacity = 0;
 		};
-		template <class InputIterator>
-		void assign(InputIterator first, InputIterator last)
+		// template <class InputIterator>
+		void assign(iterator first, iterator last)
 		{
 			clear();
 			insert(begin(), first, last);

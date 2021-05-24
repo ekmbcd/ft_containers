@@ -1,8 +1,7 @@
 #ifndef LISTITERATOR_HPP
 # define LISTITERATOR_HPP
 
-# include "List.hpp"
-# include "Node.hpp"
+# include "utils.hpp"
 
 namespace ft
 {
