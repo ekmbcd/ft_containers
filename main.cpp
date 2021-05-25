@@ -144,6 +144,6 @@ int main()
 	std::cout << std::endl;
 	*/
 
-	test_list();
+	test_vector();
 
 }

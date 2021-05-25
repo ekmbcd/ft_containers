@@ -13,22 +13,14 @@
 // # include "../include/Queue.hpp"
 // # include "../include/Stack.hpp"
 
-# ifdef __linux__
-#  define RESET "\e[0m"
-#  define GREEN "\e[92m"
-#  define BLUE "\e[94m"
-#  define BOLD "\e[1m"
-# endif
+#define RESET "\e[0m"
+#define GREEN "\e[92m"
+#define BLUE "\e[94m"
+#define MAGENTA "\e[35m"
+#define BOLD "\e[1m"
 
-# ifdef __APPLE__
-#  define RESET "\e[0m"
-#  define GREEN "\e[92m"
-#  define BLUE "\e[94m"
-#  define BOLD "\e[1m"
-# endif
-
-# define GOOD "✓"
-# define FAIL "❌"
+#define GOOD "✅"
+#define FAIL "❌"
 
 void	test_vector(void);
 void	test_list(void);
@@ -36,38 +28,38 @@ void	test_map(void);
 void	test_stack(void);
 void	test_queue(void);
 
-inline void print_header(std::string str)
-{
-	int margin = (40 - str.length()) / 2;
-	int width = (margin * 2 + str.length()) + 2;
-	std::cout << BLUE << std::endl;
-	std::cout << std::string(width, '*') << std::endl;
-	std::cout << "*" << std::string(margin, ' ') << str << std::string(margin, ' ') << "*" << std::endl;
-	std::cout << std::string(width, '*') << std::endl;
-	std::cout << RESET;
-};
+// inline void print_header(std::string str)
+// {
+// 	int margin = (40 - str.length()) / 2;
+// 	int width = (margin * 2 + str.length()) + 2;
+// 	std::cout << BLUE << std::endl;
+// 	std::cout << std::string(width, '*') << std::endl;
+// 	std::cout << "*" << std::string(margin, ' ') << str << std::string(margin, ' ') << "*" << std::endl;
+// 	std::cout << std::string(width, '*') << std::endl;
+// 	std::cout << RESET;
+// };
 
-template <typename T>
-inline void check(std::string name, T a, T b)
-{
-	std::string margin(38 - name.length(), ' ');
-	if (a == b)
-		std::cout << name << ": " << margin << BOLD << GREEN << GOOD << RESET << std::endl;
-	else
-		std::cout << name << ": " << margin << FAIL << std::endl;
-};
+// template <typename T>
+// inline void check(std::string name, T a, T b)
+// {
+// 	std::string margin(38 - name.length(), ' ');
+// 	if (a == b)
+// 		std::cout << name << ": " << margin << GOOD << std::endl;
+// 	else
+// 		std::cout << name << ": " << margin << FAIL << std::endl;
+// };
 
 inline void check(std::string name, bool good)
 {
-	std::string margin(38 - name.length(), ' ');
+	std::string margin(30 - name.length(), ' ');
 	if (good)
-		std::cout << name << ": " << margin << BOLD << GREEN << GOOD << RESET << std::endl;
+		std::cout << name << margin << GOOD << std::endl;
 	else
-		std::cout << name << ": " << margin << FAIL << std::endl;
+		std::cout << name << margin << FAIL << std::endl;
 };
 
 template <typename T>
-bool operator==(ft::Vector<T> &a, std::vector<T> &b)
+inline bool operator==(ft::Vector<T> & a, std::vector<T> & b)
 {
 	if (a.size() != b.size())
 		return (false);
@@ -82,7 +74,7 @@ bool operator==(ft::Vector<T> &a, std::vector<T> &b)
 };
 
 template <typename T>
-bool operator==(ft::List<T> &a, std::list<T> &b)
+inline bool operator==(ft::List<T> & a, std::list<T> & b)
 {
 	if (a.size() != b.size())
 		return (false);
@@ -101,7 +93,7 @@ bool operator==(ft::List<T> &a, std::list<T> &b)
 };
 
 // template <typename T, typename S>
-// bool operator==(ft::Map<T, S> &a, std::map<T, S> &b)
+// inline bool operator==(ft::Map<T, S> &a, std::map<T, S> &b)
 // {
 // 	if (a.size() != b.size())
 // 		return (false);

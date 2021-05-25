@@ -368,13 +368,17 @@ namespace ft
 		}
 		void merge (List & x)
 		{
-			splice(begin(), x);
+			if (&x == this)
+				return;
+			splice(end(), x);
 			sort();
 		}
 		template <class Compare>
   		void merge (List & x, Compare comp)
 		{
-			splice(begin(), x);
+			if (&x == this)
+				return;
+			splice(end(), x);
 			sort(comp);
 		}
 		void sort()
@@ -415,16 +419,17 @@ namespace ft
 		void reverse()
 		{
 			iterator head = begin();
-			iterator tail = end();
+			iterator tail = --end();
+			unsigned int n = size() / 2;
 			T tmp;
 
-			while (head != tail)
+			while (n--)
 			{
 				tmp = *head;
 				*head = *tail;
 				*tail = tmp;
 				++head;
-				--tmp;
+				--tail;
 			}
 		}
 	};
