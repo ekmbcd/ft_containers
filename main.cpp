@@ -1,11 +1,4 @@
-#include <vector>
-#include <iostream>
 #include "tests/tests.hpp"
-
-bool foo(int a, int b)
-{
-	return(a==b);
-}
 
 int main()
 {

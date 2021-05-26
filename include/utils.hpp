@@ -12,6 +12,15 @@ namespace ft
 		struct Node * next;
 		struct Node * prev;
 	};
+	template <class Key, class T>
+	struct TNode
+	{
+		std::pair<Key, T> pair;
+		TNode * left;
+		TNode * right;
+		TNode * parent;
+		bool end;
+	};
 	template <typename T>
 	void	swap(T & a, T & b)
 	{

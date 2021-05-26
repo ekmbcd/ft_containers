@@ -22,11 +22,11 @@
 #define GOOD "✅"
 #define FAIL "❌"
 
-void	test_vector(void);
-void	test_list(void);
-void	test_map(void);
-void	test_stack(void);
-void	test_queue(void);
+void	test_vector();
+void	test_list();
+void	test_map();
+void	test_stack();
+void	test_queue();
 
 // inline void print_header(std::string str)
 // {
@@ -56,40 +56,6 @@ inline void check(std::string name, bool good)
 		std::cout << name << margin << GOOD << std::endl;
 	else
 		std::cout << name << margin << FAIL << std::endl;
-};
-
-template <typename T>
-inline bool operator==(ft::Vector<T> & a, std::vector<T> & b)
-{
-	if (a.size() != b.size())
-		return (false);
-	if (a.empty() != b.empty())
-		return (false);
-	for (size_t i = 0; i < a.size(); i++)
-	{
-		if (a[i] != b[i])
-			return (false);
-	}
-	return (true);
-};
-
-template <typename T>
-inline bool operator==(ft::List<T> & a, std::list<T> & b)
-{
-	if (a.size() != b.size())
-		return (false);
-	if (a.empty() != b.empty())
-		return (false);
-	typename ft::List<T>::iterator it = a.begin();
-	typename std::list<T>::iterator it2 = b.begin();
-	while (it != a.end())
-	{
-		if (*it != *it2)
-			return (false);
-		++it;
-		++it2;
-	}
-	return (true);
 };
 
 // template <typename T, typename S>

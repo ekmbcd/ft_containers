@@ -21,11 +21,32 @@
 // 	std::cout << std::endl;
 // }
 
+
+template <typename T>
+bool operator==(ft::List<T> & a, std::list<T> & b)
+{
+	if (a.size() != b.size())
+		return (false);
+	if (a.empty() != b.empty())
+		return (false);
+	typename ft::List<T>::iterator it = a.begin();
+	typename std::list<T>::iterator it2 = b.begin();
+	while (it != a.end())
+	{
+		if (*it != *it2)
+			return (false);
+		++it;
+		++it2;
+	}
+	return (true);
+};
+
+
 struct Greater {
     bool operator()(const int &a, const int &b) {return a < b;}
 };
 
-static void constructors(void)
+static void constructors()
 {
 	std::cout << BLUE << "\n>Constructor" << RESET << std::endl;
 	int test[] = {0, 1, 2, 3};
@@ -46,7 +67,7 @@ static void constructors(void)
 	check("copy", l9 == l10);
 }
 
-static void copy_operator(void)
+static void copy_operator()
 {
 	std::cout << BLUE << "\n>Operator =" << RESET << std::endl;
 	int test[] = {0, 1, 2, 3};
@@ -62,7 +83,7 @@ static void copy_operator(void)
 	check("modified source", l1 != l3);
 }
 
-static void max_size(void)
+static void max_size()
 {
 	std::cout << BLUE << "\n>Max size" << RESET << std::endl;
 	ft::List<int> l1;
@@ -73,7 +94,7 @@ static void max_size(void)
 	check("string", l3.max_size() == l4.max_size());
 }
 
-static void front_back(void)
+static void front_back()
 {
 	std::cout << BLUE << "\n>Front / Back" << RESET << std::endl;
 	ft::List<int> l1;
@@ -89,7 +110,7 @@ static void front_back(void)
 	check("back", l1.back() == l2.back());
 }
 
-static void assign(void)
+static void assign()
 {
 	std::cout << BLUE << "\n>Assign" << RESET << std::endl;
 	int test[] = {0, 1, 2, 3};
@@ -103,7 +124,7 @@ static void assign(void)
 	check("constant value", l1 == l2);
 }
 
-static void push(void)
+static void push()
 {
 	std::cout << BLUE << "\n>Push front/back" << RESET << std::endl;
 	ft::List<int> l1;
@@ -126,7 +147,7 @@ static void push(void)
 	check("front and back", l1 == l2);
 }
 
-static void swap(void)
+static void swap()
 {
 	std::cout << BLUE << "\n>Swap" << RESET << std::endl;
 	ft::List<int> l1;
@@ -147,7 +168,7 @@ static void swap(void)
 	check("second list", l3 == l4);
 }
 
-static void resize(void)
+static void resize()
 {
 	std::cout << BLUE << "\n>Resize / Clear" << RESET << std::endl;
 	ft::List<int> l1;
@@ -168,7 +189,7 @@ static void resize(void)
 	check("clear", l1 == l2);
 }
 
-static void splice(void)
+static void splice()
 {
 	std::cout << BLUE << "\n>Splice" << RESET << std::endl;
 	ft::List<int> l1((size_t)10, 5);
@@ -199,7 +220,7 @@ static void splice(void)
 
 static bool even(const int& value) { return (value % 2) == 0; } 
 
-static void remove(void)
+static void remove()
 {
 	std::cout << BLUE << "\n>Remove / Remove if" << RESET << std::endl;
 	int test[] = {0, 0, 0, 1, 2, 0, 5, 3, 4, 5, 1, -1, 0, 1};
@@ -215,7 +236,7 @@ static void remove(void)
 	check("remove if", l1 == l2);
 }
 
-static void erase(void)
+static void erase()
 {
 	std::cout << BLUE << "\n>Erase" << RESET << std::endl;
 	int test[] = {0, 0, 0, 1, 2, 0, 5, 3, 4, 5, 1, -1, 0, 1};
@@ -259,7 +280,7 @@ static bool compare2(int a, int b)
     return (a == b); 
 } 
 
-static void merge(void)
+static void merge()
 {
 	std::cout << BLUE << "\n>Merge" << RESET << std::endl;
 	int test[] = {1, 2, 3};
@@ -282,7 +303,7 @@ static void merge(void)
 	check("template merge (src)", l3 == l4);
 }
 
-static void reverse(void)
+static void reverse()
 {
 	std::cout << BLUE << "\n>Reverse" << RESET << std::endl;
 	int test[] = {0, 0, 0, 1, 2, 0, 5, 3, 4, 5, 1, -1, 0, 1};
@@ -293,7 +314,7 @@ static void reverse(void)
 	check("reverse", l1 == l2);
 }
 
-static void operators(void)
+static void operators()
 {
 	std::cout << BLUE << "\n>Operators" << RESET << std::endl;
 	int test[] = {0, 0, 0, 1, 2, 0, 5, 3, 4, 5, 1, -1, 0, 1};
@@ -309,7 +330,7 @@ static void operators(void)
 	check("<= ", (l1 <= l3) == (l2 <= l4));
 }
 
-void test_list(void)
+void test_list()
 {
 	std::srand(time(0));
 	std::cout << MAGENTA << BOLD << "\n----------- LIST -----------" << RESET << std::endl;

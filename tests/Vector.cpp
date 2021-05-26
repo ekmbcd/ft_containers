@@ -34,7 +34,22 @@
 // 	std::cout << std::endl;
 // }
 
-static void default_constructor(void)
+template <typename T>
+bool operator==(ft::Vector<T> & a, std::vector<T> & b)
+{
+	if (a.size() != b.size())
+		return (false);
+	if (a.empty() != b.empty())
+		return (false);
+	for (size_t i = 0; i < a.size(); i++)
+	{
+		if (a[i] != b[i])
+			return (false);
+	}
+	return (true);
+};
+
+static void default_constructor()
 {
 	std::cout << BLUE << "\n>Constructor" << RESET << std::endl;
 	int test[] = {0, 1, 2, 3};
@@ -55,7 +70,7 @@ static void default_constructor(void)
 	check("copy", l9 == l10);
 }
 
-static void copy_operator(void)
+static void copy_operator()
 {
 	std::cout << BLUE << "\n>Operator =" << RESET << std::endl;
 	ft::Vector<int> v1;
@@ -76,7 +91,7 @@ static void copy_operator(void)
 	check("modified source", (v1 != v3));
 }
 
-static void push_pop(void)
+static void push_pop()
 {
 	std::cout << BLUE << "\n>Push / Pop" << RESET << std::endl;
 	ft::Vector<int> v1;
@@ -98,17 +113,18 @@ static void push_pop(void)
 	check("pop empty", (v1 == v2));
 }
 
-static void max_size(void)
+static void max_size()
 {
 	std::cout << BLUE << "\n>Max size" << RESET << std::endl;
 	ft::Vector<std::string> v1;
 	std::vector<std::string> v2;
-	check("string", v1.max_size() == v2.max_size());	ft::Vector<int> v3;
+	check("string", v1.max_size() == v2.max_size());
+	ft::Vector<int> v3;
 	std::vector<int> v4;
 	check("int", v3.max_size() == v4.max_size());
 }
 
-static void resize(void)
+static void resize()
 {
 	std::cout << BLUE << "\n>Resize" << RESET << std::endl;
 	ft::Vector<std::string> v1;
@@ -121,7 +137,7 @@ static void resize(void)
 	check("shorter", (v1 == v2));
 }
 
-static void access_operator(void)
+static void access_operator()
 {
 	std::cout << BLUE << "\n>Operator [], at()" << RESET << std::endl;
 	ft::Vector<int> v1;
@@ -152,7 +168,7 @@ static void access_operator(void)
 	}
 }
 
-static void front_back(void)
+static void front_back()
 {
 	std::cout << BLUE << "\n>Front / Back" << RESET << std::endl;
 	ft::Vector<int> v1;
@@ -167,7 +183,7 @@ static void front_back(void)
 	check("back", v1.front() == v2.front());
 }
 
-static void assign(void)
+static void assign()
 {
 	std::cout << BLUE << "\n>Assign" << RESET << std::endl;
 	std::string test[] = {"Hey", "what's", "up", "?"};
@@ -181,7 +197,7 @@ static void assign(void)
 	check("fill", v1 == v2);
 }
 
-static void insert(void)
+static void insert()
 {
 	std::cout << BLUE << "\n>Insert" << RESET << std::endl;
 	int test[] = {1, 2, 3};
@@ -204,7 +220,7 @@ static void insert(void)
 	check("range", v1 == v2);
 }
 
-static void erase(void)
+static void erase()
 {
 	std::cout << BLUE << "\n>Erase / Clear" << RESET << std::endl;
 	std::string test[] = {"Hey", "what's", "up", "?"};
@@ -220,7 +236,7 @@ static void erase(void)
 	check("clear", v1 == v2);
 }
 
-static void swap(void)
+static void swap()
 {
 	std::cout << BLUE << "\n>Swap" << RESET << std::endl;
 	ft::Vector<int> v1;
@@ -243,7 +259,7 @@ static void swap(void)
 	check("second vector", v3 == v4);
 }
 
-static void operators(void)
+static void operators()
 {
 	std::cout << BLUE << "\n>Operators" << RESET << std::endl;
 	ft::Vector<int> v1;
@@ -266,7 +282,7 @@ static void operators(void)
 	check("<=", (v1 <= v3) == (v2 <= v4));
 }
 
-void	test_vector(void)
+void	test_vector()
 {
 	std::cout << MAGENTA << BOLD << "\n---------- VECTOR ----------" << RESET << std::endl;
 

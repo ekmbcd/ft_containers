@@ -50,7 +50,7 @@ namespace ft
 		{
 			*this = other;
 		};
-		~Vector(void)
+		~Vector()
 		{
 			_free();
 		};
@@ -72,35 +72,35 @@ namespace ft
 		{
 			return (_array[n]);
 		};
-		iterator begin(void)
+		iterator begin()
 		{
 			return (iterator(_array));
 		};
-		const_iterator begin(void) const
+		const_iterator begin() const
 		{
 			return (const_iterator(_array));
 		};
-		iterator end(void)
+		iterator end()
 		{
 			return (iterator(_array + _size));
 		};
-		const_iterator end(void) const
+		const_iterator end() const
 		{
 			return (const_iterator(_array + _size));
 		};
-		reverse_iterator rbegin(void)
+		reverse_iterator rbegin()
 		{
 			return (reverse_iterator(_array + _size - 1));
 		};
-		const_reverse_iterator rbegin(void) const
+		const_reverse_iterator rbegin() const
 		{
 			return (const_reverse_iterator(_array + _size - 1));
 		};
-		reverse_iterator rend(void)
+		reverse_iterator rend()
 		{
 			return (reverse_iterator(_array - 1));
 		};
-		const_reverse_iterator rend(void) const
+		const_reverse_iterator rend() const
 		{
 			return (const_reverse_iterator(_array - 1));
 		};
@@ -125,15 +125,15 @@ namespace ft
 			_array[_size] = value;
 			_size++;
 		};
-		unsigned int size(void) const
+		unsigned int size() const
 		{
 			return (_size);
 		};
-		unsigned int capacity(void) const
+		unsigned int capacity() const
 		{
 			return (_capacity);
 		};
-		bool empty(void) const
+		bool empty() const
 		{
 			return (_size == 0);
 		};
@@ -171,7 +171,7 @@ namespace ft
 				++begin;
 			}
 		};
-		unsigned long max_size(void) const
+		unsigned long max_size() const
 		{
 			return (std::numeric_limits<unsigned long>::max() / sizeof(T));
 		};
@@ -207,7 +207,7 @@ namespace ft
 			}
 			return (iterator(begin));
 		};
-		void clear(void)
+		void clear()
 		{
 			_free();
 			_size = 0;
@@ -224,23 +224,23 @@ namespace ft
 			clear();
 			insert(begin(), n, value);
 		};
-		T & front(void)
+		T & front()
 		{
 			return _array[0];
 		};
-		T const & front(void) const
+		T const & front() const
 		{
 			return _array[0];
 		};
-		T & back(void)
+		T & back()
 		{
 			return _array[_size - 1];
 		};
-		T const & back(void) const
+		T const & back() const
 		{
 			return _array[_size - 1];
 		};
-		void pop_back(void)
+		void pop_back()
 		{
 			if (_size)
 				_size--;

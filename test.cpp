@@ -1,43 +1,28 @@
 #include <iostream>
 #include <list>
+#include <iterator>
+#include <map>
+#include <utility>
 
 int main()
 {
-	std::list<int> a;
-	std::cout << "SIZE = " << a.size() << std::endl;
+	std::map<int, std::string> m;
 
-	a.push_front(1);
-	std::cout << "SIZE = " << a.size() << std::endl;
-	a.push_front(2);
-	a.push_front(3);
-	a.push_front(4);
+	m.insert(std::pair<int, std::string>(1, "ff"));
+	m.insert(std::pair<int, std::string>(1, "ciao"));
 
-
-	std::cout << "MAXSIZE = " << a.max_size() << std::endl;
-	std::cout << "start: " << *(a.begin()) << std::endl;
-	//std::list<int>::iterator c = ;
-	std::cout <<  "end: " << *(a.end()) << std::endl;
-
-	std::list<int>::iterator st = a.begin();
-	std::list<int>::iterator en = a.end();
-
-	
-	std::list<int> d(10, 10);
-	std::list<int> e(3, 3);
-
-	e = d;
-	std::list<int>::reverse_iterator i = a.rbegin();
-	// while (i != e.end())
-	// {
-		std::cout <<"REV: "<< *i << std::endl;
-		// ++i;
-	// }
-	std::list<int>::const_iterator z = a.begin();
+	m.insert(std::pair<int, std::string>(2, "ciao"));
+	m.insert(std::pair<int, std::string>(9, "ciao"));
 
 
+// std::map<int, std::string>::iterator it = m.end();
+// it--;
+	for(std::map<int, std::string>::iterator it = m.begin(); it != m.end(); it++)
+	{
+		std::cout << it->first << " " << it->second << std::endl;
+	}
 
-	std::cout << *z << std::endl;	
-	++z;
-	std::cout << *z << std::endl;
+		std::cout << m.end()->first << " " << m.end()->second << std::endl;
+
 
 }
