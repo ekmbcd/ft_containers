@@ -14,19 +14,6 @@ namespace ft
 	private:
 		container_type c;
 
-		template <class A, class B>
-		friend bool	operator==(const Stack<A, B> & lhs, const Stack<A, B> & rhs);
-		template <class A, class B>
-		friend bool	operator!=(const Stack<A, B> & lhs, const Stack<A, B> & rhs);
-		template <class A, class B>
-		friend bool	operator<(const Stack<A, B> & lhs, const Stack<A, B> & rhs);
-		template <class A, class B>
-		friend bool	operator<=(const Stack<A, B> & lhs, const Stack<A, B> & rhs);
-		template <class A, class B>
-		friend bool	operator>(const Stack<A, B> & lhs, const Stack<A, B> & rhs);
-		template <class A, class B>
-		friend bool	operator>=(const Stack<A, B> & lhs, const Stack<A, B> & rhs);
-
 	public:
 		explicit Stack(const container_type & ctnr = container_type())
 		: c(ctnr)
@@ -66,36 +53,31 @@ namespace ft
 		{
 			c.pop_back();
 		};
-	};
-	template <class T, class Container>
-	bool operator==(const Stack<T, Container> & lhs, const Stack<T, Container> & rhs)
-	{
-		return (lhs.c == rhs.c);
-	};
-	template <class T, class Container>
-	bool operator!=(const Stack<T, Container> & lhs, const Stack<T, Container> & rhs)
-	{
-		return (lhs.c != rhs.c);
-	};
-	template <class T, class Container>
-	bool operator>(const Stack<T, Container> & lhs, const Stack<T, Container> & rhs)
-	{
-		return (lhs.c > rhs.c);
-	};
-	template <class T, class Container>
-	bool operator<(const Stack<T, Container> & lhs, const Stack<T, Container> & rhs)
-	{
-		return (lhs.c < rhs.c);
-	};
-	template <class T, class Container>
-	bool operator>=(const Stack<T, Container> & lhs, const Stack<T, Container> & rhs)
-	{
-		return (lhs.c >= rhs.c);
-	};
-	template <class T, class Container>
-	bool operator<=(const Stack<T, Container> & lhs, const Stack<T, Container> & rhs)
-	{
-		return (lhs.c <= rhs.c);
+
+		bool operator==(const Stack & rhs)
+		{
+			return (this->c == rhs.c);
+		};
+		bool operator!=(const Stack & rhs)
+		{
+			return (this->c != rhs.c);
+		};
+		bool operator>(const Stack & rhs)
+		{
+			return (this->c > rhs.c);
+		};
+		bool operator<(const Stack & rhs)
+		{
+			return (this->c < rhs.c);
+		};
+		bool operator>=(const Stack & rhs)
+		{
+			return (this->c >= rhs.c);
+		};
+		bool operator<=(const Stack & rhs)
+		{
+			return (this->c <= rhs.c);
+		};
 	};
 };
 

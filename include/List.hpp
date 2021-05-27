@@ -1,8 +1,6 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
-#include <limits>
-#include <memory>
 #include "utils.hpp"
 #include "ListIterator.hpp"
 	
