@@ -18,17 +18,18 @@ namespace ft
 		typedef Compare key_compare;
 
 	private:
-		TNode<Key, T> * _end;
+		TNode<Key, T> * _root;
 		Alloc _alloc;
+		key_compare _comp;
 
-		TNode<Key, T> * _new_node(Key const & key, T const & val)
+		TNode<Key, T> * _new_node(Key const & key, T const & val, TNode<Key, T> parent)
 		{
 			TNode<Key, T> * n = new TNode<Key, T>;
 			n->pair = std::make_pair(key, val);
 			n->left = NULL;
 			n->right = NULL;
-			n->parent = NULL;
-			n->end = false;
+			n->parent = parent;
+			// n->end = false;
 			return (n);
 		}
 		TNode<Key, T> * _new_node()
@@ -38,14 +39,12 @@ namespace ft
 			n->left = NULL;
 			n->right = NULL;
 			n->parent = NULL;
-			n->end = true;
+			// n->end = true;
 			return (n);
 		}
 		void _init()
 		{
-			_end = _new_node();
-			_end->right = _end;
-			_end->parent = _end;
+			_root = _new_node();
 		}
 		void _free_tree(node n)
 		{
@@ -55,20 +54,52 @@ namespace ft
 				_free_tree(n->left);
 			delete n;
 		};
+		void _insert(Key const & key, T const & val, TNode<Key, T> n)
+		{
+			if (key > n.pair.first)
+			{
+				if (!n.right)
+					n.right = _new_node(key, val, n);
+				else
+					_insert(key, val, n.right);
+			}
+			else if (key < n.pair.first)
+			{
+				if (!n.left)
+					n.left = _new_node(key, val, n);
+				else
+					_insert(key, val, n.left);
+			}
+		}
 
 	public:
 		explicit Map(const key_compare & comp = key_compare(), const Alloc & alloc = Alloc())
-		:_alloc(alloc)
+		:_alloc(alloc), _comp(comp)
 		{
-
+			_init();
 		}
-
 		template <class InputIterator>
-		Map(InputIterator first, InputIterator last, const key_compare & comp = key_compare(), const Alloc & alloc = Alloc());
-
-		Map(const Map & x);
-
-		Map & operator=(const map& x);
+		Map(InputIterator first, InputIterator last, const key_compare & comp = key_compare(), const Alloc & alloc = Alloc())
+		:_alloc(alloc), _comp(comp)
+		{
+			_init();
+			insert(first, last);
+		}
+		Map(const Map<Key, T> & other)
+		{
+			_init();
+			*this = other;
+		}
+		~Map(void)
+		{
+			_free_tree(_root);	
+		}
+		Map & operator=(const map & x)
+		{
+			clear();
+			insert(other.begin(), other.end());
+			return (*this);
+		}
 
 	};
 }
