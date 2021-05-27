@@ -137,6 +137,6 @@ int main()
 	std::cout << std::endl;
 	*/
 
-	test_vector();
+	test_stack();
 
 }

@@ -9,9 +9,9 @@
 # include <iostream>
 # include "../include/Vector.hpp"
 # include "../include/List.hpp"
-// # include "../include/Map.hpp"
-// # include "../include/Queue.hpp"
-// # include "../include/Stack.hpp"
+# include "../include/Map.hpp"
+# include "../include/Queue.hpp"
+# include "../include/Stack.hpp"
 
 #define RESET "\e[0m"
 #define GREEN "\e[92m"
