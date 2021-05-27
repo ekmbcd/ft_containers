@@ -1,4 +1,4 @@
-#include "tests/tests.hpp"
+#include "tests.hpp"
 
 int main()
 {
