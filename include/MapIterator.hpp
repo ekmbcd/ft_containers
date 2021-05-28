@@ -378,8 +378,7 @@ namespace ft
 	{
 	public:
 		typedef std::pair<Key, T> value_type;
-		typedef std::pair<Key, T>& value_type &;
-		typedef BNode<Key, T>* nodeptr;
+		typedef TNode<Key, T>* nodeptr;
 	protected:
 		nodeptr _ptr;
 	private:

@@ -159,8 +159,8 @@ namespace ft
 			while (n--)
 				position = insert(position, value);
 		};
-		// template <class InputIterator>
-		void insert(iterator position, iterator begin, iterator end)
+		template <class InputIterator>
+		void insert(iterator position, InputIterator begin, InputIterator end)
 		{
 			while (begin != end)
 			{
@@ -210,8 +210,8 @@ namespace ft
 			_size = 0;
 			_capacity = 0;
 		};
-		// template <class InputIterator>
-		void assign(iterator first, iterator last)
+		template <class InputIterator>
+		void assign(InputIterator first, InputIterator last)
 		{
 			clear();
 			insert(begin(), first, last);
