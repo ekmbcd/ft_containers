@@ -298,19 +298,16 @@ namespace ft
 		}
 		return (a.size() < b.size());
 	}
-
 	template <class T>
 	bool operator<=(const Vector<T> &a, const Vector<T> &b)
 	{
 		return (a < b || a == b);
 	}
-
 	template <class T>
 	bool operator>(const Vector<T> &a, const Vector<T> &b)
 	{
 		return (!(a < b) && !(a == b));
 	}
-
 	template <class T>
 	bool operator>=(const Vector<T> &a, const Vector<T> &b)
 	{

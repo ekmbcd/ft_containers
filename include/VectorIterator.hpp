@@ -3,7 +3,6 @@
 
 namespace ft
 {
-	
 	template <typename T>
 	class ConstVectorIterator;
 	template <typename T>
@@ -70,22 +69,6 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		// bool operator>(VectorIterator const & other) const
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator>=(VectorIterator const & other) const
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<(VectorIterator const & other) const
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator<=(VectorIterator const & other) const
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		T & operator*()
 		{
 			return (*_ptr);
@@ -149,10 +132,6 @@ namespace ft
 		{
 			*this = other;
 		};
-		// ConstVectorIterator(VectorIterator<T> other)
-		// {
-		// 	_ptr = other.node();
-		// };
 		ConstVectorIterator(T * ptr)
 		: _ptr(ptr)
 		{};
@@ -197,22 +176,6 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		// bool operator>(ConstVectorIterator const & other) const
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator>=(ConstVectorIterator const & other) const
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<(ConstVectorIterator const & other) const
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator<=(ConstVectorIterator const & other) const
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		const T & operator*() const
 		{
 			return (*_ptr);
@@ -321,22 +284,6 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		// bool operator>(const ReverseVectorIterator & other) const
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator>=(const ReverseVectorIterator & other) const
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<(const ReverseVectorIterator & other) const
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator<=(const ReverseVectorIterator & other) const
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		T & operator*()
 		{
 			return (*_ptr);
@@ -445,22 +392,6 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		// bool operator>(const ConstReverseVectorIterator & other) const
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator>=(const ConstReverseVectorIterator & other) const
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<(const ConstReverseVectorIterator & other) const
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator<=(const ConstReverseVectorIterator & other) const
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		T & operator*()
 		{
 			return (_ptr->value);

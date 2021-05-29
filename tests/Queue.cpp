@@ -109,7 +109,7 @@ static void operators()
 
 void test_queue(void)
 {
-	std::cout << MAGENTA << BOLD << "\n---------- QUEUE ----------" << RESET << std::endl;
+	std::cout << MAGENTA << BOLD << "\n------------- QUEUE -------------" << RESET << std::endl;
 	constructors();
 	push_pop();
 	empty_size();

@@ -333,7 +333,7 @@ static void operators()
 void test_list()
 {
 	std::srand(time(0));
-	std::cout << MAGENTA << BOLD << "\n----------- LIST -----------" << RESET << std::endl;
+	std::cout << MAGENTA << BOLD << "\n-------------- LIST -------------" << RESET << std::endl;
 	constructors();
 	copy_operator();
 	max_size();

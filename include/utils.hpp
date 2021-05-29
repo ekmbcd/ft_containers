@@ -21,7 +21,7 @@ namespace ft
 		TNode * left;
 		TNode * right;
 		TNode * parent;
-		bool end;
+		bool useless;
 	};
 	template <typename T>
 	void	swap(T & a, T & b)

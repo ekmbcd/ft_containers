@@ -88,22 +88,6 @@ namespace ft
 		{
 			return (!(*this == other));
 		};
-		// bool operator>(const MapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator<(const MapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator>=(const MapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<=(const MapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		MapIterator & operator++()
 		{
 			_ptr = _next(_ptr);
@@ -212,22 +196,6 @@ namespace ft
 		{
 			return (!(*this == other));
 		};
-		// bool operator>(const ConstMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator<(const ConstMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator>=(const ConstMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<=(const ConstMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		ConstMapIterator & operator++()
 		{
 			_ptr = _next(_ptr);
@@ -334,22 +302,6 @@ namespace ft
 		{
 			return (!(*this == other));
 		};
-		// bool operator>(const ReverseMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator<(const ReverseMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator>=(const ReverseMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<=(const ReverseMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		ReverseMapIterator & operator++()
 		{
 			_ptr = _prev(_ptr);
@@ -455,22 +407,6 @@ namespace ft
 		{
 			return (!(*this == other));
 		};
-		// bool operator>(const ConstReverseMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator<(const ConstReverseMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator>=(const ConstReverseMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<=(const ConstReverseMapIterator<Key, T> & other)
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		ConstReverseMapIterator & operator++()
 		{
 			_ptr = _prev(_ptr);

@@ -5,7 +5,6 @@
 
 namespace ft
 {
-	
 	template <typename T>
 	class ConstListIterator;
 	template <typename T>
@@ -72,22 +71,6 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		// bool operator>(ListIterator const & other) const
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator>=(ListIterator const & other) const
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<(ListIterator const & other) const
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator<=(ListIterator const & other) const
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		T & operator*()
 		{
 			return (_ptr->value);
@@ -96,46 +79,6 @@ namespace ft
 		{
 			return (_ptr->value);
 		};
-	// 	ListIterator operator+(int n) const
-	// 	{
-	// 		ListIterator tmp(*this);
-	// 		tmp += n;
-	// 		return (tmp);
-	// 	};
-	// 	ListIterator operator-(int n) const
-	// 	{
-	// 		ListIterator tmp(*this);
-	// 		tmp -= n;
-	// 		return (tmp);
-	// 	};
-	// 	ListIterator & operator+=(int n)
-	// 	{
-	// 		while (n < 0)
-	// 		{
-	// 			(*this)--;
-	// 			n++;
-	// 		}
-	// 		while (n > 0)
-	// 		{
-	// 			(*this)++;
-	// 			n--;
-	// 		}
-	// 		return (*this);
-	// 	};
-	// 	ListIterator & operator-=(int n)
-	// 	{
-	// 		while (n > 0)
-	// 		{
-	// 			operator--();
-	// 			n--;
-	// 		}
-	// 		while (n < 0)
-	// 		{
-	// 			operator++();
-	// 			n++;
-	// 		}
-	// 		return (*this);
-	// 	};
 	};
 	
 	template <typename T>
@@ -151,10 +94,6 @@ namespace ft
 		{
 			*this = other;
 		};
-		// ConstListIterator(ListIterator<T> other)
-		// {
-		// 	_ptr = other.node();
-		// };
 		ConstListIterator(Node<T> * ptr)
 		: _ptr(ptr)
 		{};
@@ -199,22 +138,6 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		// bool operator>(ConstListIterator const & other) const
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator>=(ConstListIterator const & other) const
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<(ConstListIterator const & other) const
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator<=(ConstListIterator const & other) const
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		const T & operator*() const
 		{
 			return (_ptr->value);
@@ -223,46 +146,6 @@ namespace ft
 		{
 			return (_ptr->value);
 		};
-	// 	ConstListIterator operator+(int n) const
-	// 	{
-	// 		ConstListIterator tmp(*this);
-	// 		tmp += n;
-	// 		return (tmp);
-	// 	};
-	// 	ConstListIterator operator-(int n) const
-	// 	{
-	// 		ConstListIterator tmp(*this);
-	// 		tmp -= n;
-	// 		return (tmp);
-	// 	};
-	// 	ConstListIterator & operator+=(int n)
-	// 	{
-	// 		while (n < 0)
-	// 		{
-	// 			(*this)--;
-	// 			n++;
-	// 		}
-	// 		while (n > 0)
-	// 		{
-	// 			(*this)++;
-	// 			n--;
-	// 		}
-	// 		return (*this);
-	// 	};
-	// 	ConstListIterator & operator-=(int n)
-	// 	{
-	// 		while (n > 0)
-	// 		{
-	// 			operator--();
-	// 			n--;
-	// 		}
-	// 		while (n < 0)
-	// 		{
-	// 			operator++();
-	// 			n++;
-	// 		}
-	// 		return (*this);
-	// 	};
 	};
 
 	template <typename T>
@@ -323,22 +206,6 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		// bool operator>(const ReverseListIterator & other) const
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator>=(const ReverseListIterator & other) const
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<(const ReverseListIterator & other) const
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator<=(const ReverseListIterator & other) const
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		T & operator*()
 		{
 			return (_ptr->value);
@@ -447,22 +314,6 @@ namespace ft
 		{
 			return (_ptr != other._ptr);
 		};
-		// bool operator>(const ConstReverseListIterator & other) const
-		// {
-		// 	return (_ptr > other._ptr);
-		// };
-		// bool operator>=(const ConstReverseListIterator & other) const
-		// {
-		// 	return (_ptr >= other._ptr);
-		// };
-		// bool operator<(const ConstReverseListIterator & other) const
-		// {
-		// 	return (_ptr < other._ptr);
-		// };
-		// bool operator<=(const ConstReverseListIterator & other) const
-		// {
-		// 	return (_ptr <= other._ptr);
-		// };
 		T & operator*()
 		{
 			return (_ptr->value);
@@ -471,46 +322,6 @@ namespace ft
 		{
 			return (_ptr->value);
 		};
-		// ConstReverseListIterator operator+(int n) const
-		// {
-		// 	ConstReverseListIterator tmp(*this);
-		// 	tmp += n;
-		// 	return (tmp);
-		// };
-		// ConstReverseListIterator operator-(int n) const
-		// {
-		// 	ConstReverseListIterator tmp(*this);
-		// 	tmp -= n;
-		// 	return (tmp);
-		// };
-		// ConstReverseListIterator & operator+=(int n)
-		// {
-		// 	while (n < 0)
-		// 	{
-		// 		(*this)--;
-		// 		n++;
-		// 	}
-		// 	while (n > 0)
-		// 	{
-		// 		(*this)++;
-		// 		n--;
-		// 	}
-		// 	return (*this);
-		// };
-		// ConstReverseListIterator & operator-=(int n)
-		// {
-		// 	while (n > 0)
-		// 	{
-		// 		operator--();
-		// 		n--;
-		// 	}
-		// 	while (n < 0)
-		// 	{
-		// 		operator++();
-		// 		n++;
-		// 	}
-		// 	return (*this);
-		// };
 	};
 };
 

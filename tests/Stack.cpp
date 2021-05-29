@@ -108,7 +108,7 @@ static void operators()
 
 void test_stack(void)
 {
-	std::cout << MAGENTA << BOLD << "\n---------- Stack ----------" << RESET << std::endl;
+	std::cout << MAGENTA << BOLD << "\n------------- Stack -------------" << RESET << std::endl;
 	constructors();
 	push_pop();
 	empty_size();

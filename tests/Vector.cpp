@@ -1,39 +1,5 @@
 #include "./tests.hpp"
 
-// template <typename T>
-// static void print_vector(T vec, std::string type)
-// {
-// 	typename T::iterator it;
-
-// 	std::cout << BOLD << type << ", size: " << vec.size() << ", empty: " << vec.empty() << ", capacity: " << vec.capacity() << RESET << std::endl;
-// 	it = vec.begin();
-// 	while (it != vec.end())
-// 	{
-// 		std::cout << *it;
-// 		if (it + 1 != vec.end())
-// 			std::cout << " - ";
-// 		++it;
-// 	}
-// 	std::cout << std::endl;
-// }
-
-// template <typename T>
-// static void print_vector_reverse(T vec, std::string type)
-// {
-// 	typename T::iterator it;
-
-// 	std::cout << BOLD << type << ", size: " << vec.size() << ", empty: " << vec.empty() << ", capacity: " << vec.capacity() << RESET << std::endl;
-// 	it = vec.rbegin();
-// 	while (it != vec.rend())
-// 	{
-// 		std::cout << *it;
-// 		if (it + 1 != vec.rend())
-// 			std::cout << " - ";
-// 		++it;
-// 	}
-// 	std::cout << std::endl;
-// }
-
 template <typename T>
 bool operator==(ft::Vector<T> & a, std::vector<T> & b)
 {
@@ -156,7 +122,7 @@ static void access_operator()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::string(6, ' ') << BOLD << GREEN << GOOD << RESET << std::endl;
+		std::cout << e.what() << std::string(8, ' ') << BOLD << GREEN << GOOD << RESET << std::endl;
 	}
 	try
 	{
@@ -164,7 +130,7 @@ static void access_operator()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::string(2, ' ') << BOLD << GREEN << GOOD << RESET << std::endl;
+		std::cout << e.what() << std::string(4, ' ') << BOLD << GREEN << GOOD << RESET << std::endl;
 	}
 }
 
@@ -284,7 +250,7 @@ static void operators()
 
 void	test_vector()
 {
-	std::cout << MAGENTA << BOLD << "\n---------- VECTOR ----------" << RESET << std::endl;
+	std::cout << MAGENTA << BOLD << "\n------------- VECTOR ------------" << RESET << std::endl;
 
 	default_constructor();
 	copy_operator();
